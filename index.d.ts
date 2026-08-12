@@ -16,7 +16,8 @@ interface IPC extends Duplex {
 
 declare class IPC {
   /**
-   * Returns a duplex stream using the provided `port`. See `bare-stream`'s `Duplex` (<https://github.com/holepunchto/bare-stream>) for the duplex stream API.
+   * Returns a duplex stream using the provided `port`. See `bare-stream`'s `Duplex`
+   * (<https://github.com/holepunchto/bare-stream>) for the duplex stream API.
    * @param port - The port to open the stream over, as returned by `IPC.open()`.
    */
   constructor(port: IPCPort)
@@ -27,7 +28,10 @@ interface IPCPort extends Transferable<[incoming: number, outgoing: number]> {
   readonly incoming: number
   /** The file handle used for writing. Read-only. */
   readonly outgoing: number
-  /** A boolean for whether the `port` is detached. A port becomes detached once it is connected or transferred, and a detached port cannot be transferred again. */
+  /**
+   * A boolean for whether the `port` is detached. A port becomes detached once it is connected or
+   * transferred, and a detached port cannot be transferred again.
+   */
   readonly detached: boolean
 
   /**
@@ -51,7 +55,9 @@ declare namespace IPC {
   export { IPCPort }
 
   /**
-   * Returns a pair of connected `IPCPort`s for constructing the IPC duplex stream based on `bare-pipe`. Each port is transferable and can be sent to another thread or process before being connected.
+   * Returns a pair of connected `IPCPort`s for constructing the IPC duplex stream based on
+   * `bare-pipe`. Each port is transferable and can be sent to another thread or process before
+   * being connected.
    * @returns A pair of connected ports, one for each end of the IPC channel.
    */
   export function open(): [IPCPort, IPCPort]
