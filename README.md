@@ -27,7 +27,7 @@ b.on('data', (data) => {
 
 ## API
 
-See the [full API reference](https://docs.pears.com/reference/bare/modules/bare-ipc).
+See the [`bare-ipc` reference](https://docs.pears.com/reference/bare/modules/bare-ipc).
 
 ## License
 
