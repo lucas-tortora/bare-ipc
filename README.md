@@ -25,91 +25,9 @@ b.on('data', (data) => {
 }).end('hello a')
 ```
 
-<!-- bare-refgen:api start -->
-
 ## API
 
-### IPC
-
-#### `new IPC(port: IPCPort)`
-
-Returns a duplex stream using the provided `port`. See `bare-stream`'s `Duplex` (<https://github.com/holepunchto/bare-stream>) for the duplex stream API.
-
-**Parameters**
-
-| Parameter | Type      | Default | Description                                                    |
-| --------- | --------- | ------- | -------------------------------------------------------------- |
-| `port`    | `IPCPort` | —       | The port to open the stream over, as returned by `IPC.open()`. |
-
-#### `incoming: Pipe`
-
-The underlying `bare-pipe` `Pipe` used for reading. Read-only.
-
-#### `IPC.open(): [IPCPort, IPCPort]`
-
-Returns a pair of connected `IPCPort`s for constructing the IPC duplex stream based on `bare-pipe`. Each port is transferable and can be sent to another thread or process before being connected.
-
-**Returns** `[IPCPort, IPCPort]` — A pair of connected ports, one for each end of the IPC channel.
-
-#### `outgoing: Pipe`
-
-The underlying `bare-pipe` `Pipe` used for writing. Read-only.
-
-#### `ref(): this`
-
-Increase the reference count for the IPC to keep the event loop alive.
-
-#### `unref(): this`
-
-Decrease the reference count for the IPC to allow the event loop to exit.
-
-### IPCPort
-
-#### `new IPCPort(incoming: number, outgoing: number)`
-
-Constructs a port from a pair of file handles, `incoming` and `outgoing`.
-
-**Parameters**
-
-| Parameter  | Type     | Default | Description                       |
-| ---------- | -------- | ------- | --------------------------------- |
-| `incoming` | `number` | —       | The file handle used for reading. |
-| `outgoing` | `number` | —       | The file handle used for writing. |
-
-#### `connect(): IPC`
-
-Returns an `IPC` connected to the `port` and marks the `port` as detached.
-
-**Returns** `IPC` — An `IPC` duplex stream connected to the port.
-
-#### `detached: boolean`
-
-A boolean for whether the `port` is detached. A port becomes detached once it is connected or transferred, and a detached port cannot be transferred again.
-
-#### `incoming: number`
-
-The file handle used for reading. Read-only.
-
-#### `outgoing: number`
-
-The file handle used for writing. Read-only.
-
-## `bare-ipc/errors`
-
-### IPCError
-
-#### `IPCError.ALREADY_CONNECTED(msg: string): IPCError`
-
-Create the error thrown when transferring a port that has already been connected or transferred.
-
-**Parameters**
-
-| Parameter | Type     | Default | Description        |
-| --------- | -------- | ------- | ------------------ |
-| `msg`     | `string` | —       | The error message. |
-
-**Returns** `IPCError` — An error with code `ALREADY_CONNECTED`.
-<!-- bare-refgen:api end -->
+See the [full API reference](https://docs.pears.com/reference/bare/modules/bare-ipc).
 
 ## License
 
